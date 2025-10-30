@@ -1,0 +1,157 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #fff0f5;
+}
+
+/* Glitter Animation */
+@keyframes glitter {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+.glitter-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ffb6c1, #ff69b4, #fff);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glitter 3s linear infinite;
+}
+
+/* Glitter effect for buttons */
+.cta-button, .pricing-card button, #contact button {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before,
+.pricing-card button::before,
+#contact button::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+    transform: rotate(25deg);
+    animation: glitter 2s linear infinite;
+}
+
+
+/* Links */
+a { text-decoration: none; color: #ff69b4; }
+
+/* Logo Rotation Animation */
+@keyframes rotateLogo {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+
+/* Hero Section */
+#hero {
+    position: relative; /* needed for absolute positioning of overlay */
+    background: url('images/logo.jpg') no-repeat center center/cover; /* your hero photo */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+/* Transparent Logo Behind Hero */
+#hero::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;  /* adjust size */
+    height: 500px;
+    background: url('images/logo.jpg') no-repeat center center;
+    background-size: contain;
+    opacity: 0.1; /* transparency */
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* ensures text/buttons are clickable */
+    z-index: 0; /* behind the hero content */
+    animation: rotateLogo 60s linear infinite; /* rotates continuously */
+
+}
+
+/* Ensure hero content stays on top */
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-button {
+    background-color: #ffb6c1;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.cta-button:hover { background-color: #ff69b4; }
+
+
+
+/* Services Section */
+#services { padding: 60px 20px; text-align: center; }
+.services-container { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
+.service-card { background-color: #ffe4e1; padding: 20px; border-radius: 15px; width: 300px; }
+
+/* Gallery Section */
+#gallery { padding: 60px 20px; text-align: center; }
+.gallery-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.gallery-container img { width: 300px; height: 300px; border-radius: 15px; object-fit: cover; }
+
+/* Pricing Section */
+#pricing { padding: 60px 20px; text-align: center; }
+.pricing-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.pricing-card { background-color: #ffe4e1; padding: 20px; border-radius: 15px; width: 250px; }
+.pricing-card button { width: 100%; padding: 10px; margin-top: 10px; border-radius: 30px; background: linear-gradient(135deg, #ffb6c1, #ff69b4); border: none; color: white; font-weight: bold; cursor: pointer; transition: 0.3s ease; }
+.pricing-card button:hover { background: linear-gradient(135deg, #ff69b4, #ff1493); }
+
+/* Contact Section */
+#contact { padding: 60px 20px; text-align: center; }
+#contact form { display: flex; flex-direction: column; max-width: 400px; margin: 20px auto; gap: 10px; }
+#contact input, #contact textarea { padding: 10px; border-radius: 10px; border: 1px solid #ccc; width: 100%; }
+#contact button { padding: 10px; border-radius: 30px; background: linear-gradient(135deg, #ffb6c1, #ff69b4); border: none; color: white; font-weight: bold; cursor: pointer; transition: 0.3s ease; }
+#contact button:hover { background: linear-gradient(135deg, #ff69b4, #ff1493); }
+
+/* Responsive Design */
+@media(max-width: 768px){
+    .services-container, .gallery-container, .pricing-container { flex-direction: column; align-items: center; }
+}
+
+/* About Section */
+#about {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff0f5;
+}
+
+#about h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ff69b4;
+}
+
+#about p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 10px auto;
+    line-height: 1.6;
+    color: #333;
+}
+
